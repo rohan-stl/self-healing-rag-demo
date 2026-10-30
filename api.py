@@ -16,7 +16,7 @@ from pydantic import BaseModel, Field
 # Chroma collection as `collection`. Importing it also validates GROQ_API_KEY.
 from rag_agent import app as rag_workflow
 from rag_agent import collection
-
+import os
 
 api = FastAPI(
     title="Self-Healing RAG API",
@@ -24,16 +24,17 @@ api = FastAPI(
     description="HTTP adapter for the existing LangGraph RAG workflow.",
 )
 
-import os
-
-frontend_origin = os.getenv("FRONTEND_ORIGIN", "").rstrip("/")
+frontend_origin = os.getenv(
+    "FRONTEND_ORIGIN",
+    ""
+).strip().rstrip("/")
 
 allowed_origins = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
 ]
 
-if frontend_origin:
+if frontend_origin and frontend_origin not in allowed_origins:
     allowed_origins.append(frontend_origin)
 
 api.add_middleware(
