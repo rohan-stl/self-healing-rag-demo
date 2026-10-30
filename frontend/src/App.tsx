@@ -271,7 +271,7 @@ function App() {
                       </div>
                       <div className="message-body">
                         <div className="message-author">{message.role === 'user' ? 'You' : 'RAG Assistant'}</div>
-                        <div className={`message-bubble ${message.isError ? 'error-bubble' : ''}`}>
+                        <div className={`message-bubble ${ "isError" in message && message.isError ? 'error-bubble' : 'chat-message'}`}>
                           {message.content}
                         </div>
                         {message.role === 'assistant' && message.result && (
