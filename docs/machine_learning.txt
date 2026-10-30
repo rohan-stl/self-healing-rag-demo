@@ -1,7 +1,186 @@
-Machine learning is a subset of artificial intelligence that enables systems to learn from data.
-Supervised learning uses labeled training data to teach models to make predictions on new examples.
-Unsupervised learning finds hidden patterns in data without any labeled examples.
-Neural networks are computational models inspired by the structure of the human brain.
-Overfitting occurs when a model learns training data too well and performs poorly on new unseen data.
-Regularization techniques like dropout and L2 penalty help prevent overfitting in neural networks.
-The training process involves adjusting model weights to minimize a loss function over many iterations.
+DOCUMENT TITLE: Machine Learning Fundamentals
+DOCUMENT ID: ML-FUNDAMENTALS-001
+DOCUMENT VERSION: 2.0
+DOCUMENT TYPE: Educational knowledge document
+
+============================================================
+1. INTRODUCTION TO ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING
+============================================================
+
+Artificial intelligence (AI) is a broad field of computer science concerned with building systems that perform tasks commonly associated with human intelligence. Examples include recognizing images, understanding language, making recommendations, planning routes, and supporting decisions.
+
+Machine learning (ML) is a subset of artificial intelligence. It enables computer systems to learn patterns from data and use those patterns to make predictions, classifications, or decisions. Instead of writing a separate rule for every possible situation, developers train a model using examples.
+
+A machine learning model is a mathematical or computational representation learned from training data. After training, the model can process new input data. The process of using a trained model to produce a prediction is called inference.
+
+Example: A company can train a machine learning model using historical equipment measurements and maintenance records. The model may learn patterns associated with equipment failure and estimate whether a machine is at risk of failing. The prediction is useful only to the extent that the training data represents the conditions in which the model will be used.
+
+Machine learning does not automatically understand a problem in the same way a person does. It identifies statistical patterns in the data and applies what it learned to new inputs.
+
+===============================
+2. TYPES OF MACHINE LEARNING
+===============================
+
+Machine learning is commonly divided into supervised learning, unsupervised learning, and other approaches such as reinforcement learning.
+
+2.1 Supervised learning
+
+Supervised learning uses labelled training data. Each training example contains input information and a known target or answer. During training, the model learns a relationship between the inputs and the target so that it can make predictions for new examples.
+
+Example: A dataset for house-price prediction may contain property size, location, number of bedrooms, and the known sale price. The property details are the input features, and the sale price is the target value. A model learns from these labelled examples and predicts prices for properties it has not seen before.
+
+Two common supervised-learning tasks are classification and regression.
+
+Classification predicts a category or class. Examples include classifying an email as spam or not spam, identifying whether a transaction is potentially fraudulent, and classifying an image as containing a cat or a dog.
+
+Regression predicts a numerical value. Examples include estimating house prices, forecasting energy consumption, and predicting delivery time.
+
+2.2 Unsupervised learning
+
+Unsupervised learning works with data that does not have supplied target labels. The algorithm looks for structure, similarities, groups, or unusual patterns in the data.
+
+Example: A retailer may have customer purchase records without predefined customer groups. A clustering algorithm can group customers with similar purchasing behavior. The business can then study those groups and decide whether they are useful for marketing or planning.
+
+Common unsupervised-learning tasks include clustering, dimensionality reduction, and anomaly detection. Clustering groups similar observations. Dimensionality reduction represents data using fewer variables while attempting to retain useful structure. Anomaly detection identifies observations that differ substantially from typical patterns.
+
+2.3 Reinforcement learning
+
+Reinforcement learning trains an agent to choose actions through interaction with an environment. The agent receives feedback in the form of rewards or penalties and learns a policy for selecting actions. It is used in areas such as robotics, game-playing, and sequential decision-making.
+
+===============================
+3. FEATURES, LABELS, AND DATASETS
+===============================
+
+A dataset is a collection of examples used to develop or evaluate a machine learning system. A feature is an input variable that describes an example. A label or target is the answer that a supervised-learning model is trained to predict.
+
+For a house-price dataset, possible features include floor area, number of rooms, age of the property, and location. The target may be the final sale price.
+
+Data quality strongly affects model quality. Missing values, incorrect labels, duplicated records, inconsistent units, and unrepresentative examples can cause poor results. Data should be inspected and prepared before model training.
+
+A dataset is commonly divided into training, validation, and test sets.
+
+The training set is used to fit the model's parameters. The validation set is used during development to compare model configurations and tune settings. The test set is held back until final evaluation to estimate performance on data that was not used to train or tune the model.
+
+Data leakage occurs when information that would not legitimately be available at prediction time enters the training process. Leakage can make evaluation results look better than real-world performance. For example, including a field that is calculated using the target value can allow the model to indirectly see the answer.
+
+===============================
+4. NEURAL NETWORKS
+===============================
+
+Neural networks are computational models inspired in a simplified way by the interconnected structure of the human brain. They are made of connected computational units commonly called neurons. A neural network typically contains an input layer, one or more hidden layers, and an output layer.
+
+The input layer receives the features. Hidden layers transform information using learned weights, biases, and activation functions. The output layer produces the model's prediction, such as a category probability or a numerical estimate.
+
+A weight controls the strength of a connection between computational units. A bias is an additional trainable value that helps shift a unit's output. An activation function introduces non-linearity, enabling a network to model relationships that cannot be represented by a simple linear transformation alone.
+
+A neural network's architecture describes how its layers and units are arranged and connected. The appropriate architecture depends on the problem, the amount and type of data, available computing resources, and performance requirements.
+
+Neural networks are used in image recognition, speech processing, natural language processing, forecasting, and many other applications. A neural network is not automatically the best choice for every machine learning problem; simpler models may be easier to train, explain, and maintain.
+
+===============================
+5. MODEL TRAINING, LOSS, AND OPTIMIZATION
+===============================
+
+Training is the process of adjusting a model's trainable parameters so that its predictions become more consistent with the examples in the training data.
+
+A loss function measures the difference between a model's predictions and the expected targets according to a chosen objective. The training process attempts to minimize this loss. The appropriate loss function depends on the task. For example, cross-entropy loss is commonly used for classification, while mean squared error is commonly used for regression.
+
+During a training iteration, the model makes predictions, the loss is calculated, and an optimization algorithm updates the model's parameters. Gradient descent is a family of optimization methods that uses gradients of the loss to determine how parameters should be adjusted. Backpropagation efficiently calculates gradients through the layers of a neural network.
+
+An epoch is one complete pass through the training dataset. Training usually involves many iterations or batches over multiple epochs. The number of epochs, learning rate, batch size, network architecture, and other settings influence training behavior.
+
+The learning rate controls the size of parameter updates. If it is too large, training may be unstable or fail to converge. If it is too small, training may progress very slowly. These settings are examples of hyperparameters, which are selected by the developer rather than learned directly as model weights.
+
+===============================
+6. OVERFITTING AND UNDERFITTING
+===============================
+
+Overfitting occurs when a model learns the training data too closely, including noise or accidental patterns, and performs poorly on new, unseen data. An overfitted model may have very good training performance but noticeably worse validation or test performance.
+
+Example: A model trained to recognize animals may memorize backgrounds that frequently appear in its training images instead of learning visual characteristics of the animals. It may then make incorrect predictions when the background changes.
+
+Underfitting occurs when a model is too simple, has not been trained sufficiently, or otherwise fails to capture important patterns. An underfitted model performs poorly on both training data and new data.
+
+Generalization is a model's ability to perform well on new examples drawn from the intended use environment. The purpose of model evaluation is not merely to achieve a low training loss; it is to estimate how well the model generalizes.
+
+===============================
+7. REGULARIZATION AND OVERFITTING PREVENTION
+===============================
+
+Regularization refers to techniques that discourage a model from becoming unnecessarily complex or overly dependent on the training data. Regularization can help reduce overfitting, although no technique guarantees that overfitting will be eliminated.
+
+Dropout is a regularization technique used in neural networks. During training, dropout temporarily disables a randomly selected subset of units or their outputs. This discourages the network from relying too heavily on particular units. Standard dropout behavior is different during inference, when the network uses the full set of units with the appropriate scaling handled by the framework.
+
+L2 regularization adds a penalty related to the squared magnitude of model weights to the training objective. This encourages smaller weights and can reduce excessive model complexity. L2 regularization is also commonly referred to as weight decay, although implementation details can differ between optimizers.
+
+Other methods that may help control overfitting include early stopping, data augmentation, collecting more representative training data, reducing model complexity, and using suitable cross-validation procedures.
+
+Early stopping monitors validation performance and stops training when that performance stops improving according to a defined rule. Data augmentation creates modified training examples, such as slightly changed or cropped images, when those transformations preserve the correct label.
+
+The choice of regularization method depends on the model, dataset, and task. Developers should compare training and validation behavior rather than assuming that one technique will always work.
+
+===============================
+8. MODEL EVALUATION
+===============================
+
+Evaluation metrics describe different aspects of model performance. The correct metric depends on the problem and the consequences of errors.
+
+For classification, accuracy measures the fraction of predictions that are correct. Precision measures how many examples predicted as positive are actually positive. Recall measures how many actual positive examples are identified. The F1 score combines precision and recall using their harmonic mean.
+
+Accuracy alone can be misleading when classes are imbalanced. For example, if only a small percentage of transactions are fraudulent, a model that predicts every transaction as legitimate may have high accuracy but fail to detect fraud. Precision, recall, confusion matrices, and other task-specific measures provide additional information.
+
+For regression, mean absolute error (MAE) measures the average absolute difference between predictions and actual values. Root mean squared error (RMSE) gives larger errors more influence because the errors are squared before averaging and taking the square root.
+
+A model's evaluation should use data that is separate from the data used to fit the model. Evaluation should also reflect the conditions in which the model will operate. Changes in the real-world data distribution can reduce performance after deployment; this is often called data drift or distribution shift.
+
+===============================
+9. PRACTICAL MACHINE LEARNING EXAMPLE
+===============================
+
+Consider a supervised-learning project that predicts whether a machine requires maintenance within the next seven days.
+
+The input features might include temperature, vibration measurements, operating hours, and previous maintenance events. The target label indicates whether maintenance was required within the specified period.
+
+The project team collects historical examples, checks their quality, and divides them into training, validation, and test sets. The team trains a model by minimizing a suitable loss function. It compares validation results while tuning model settings and evaluates the final model on the held-out test set.
+
+If training performance is high but validation performance is poor, the team investigates overfitting. It may try regularization, simpler model architecture, more representative data, or improved feature selection. After evaluation, the model can be used to score new equipment measurements. The prediction should support, not automatically replace, appropriate engineering and maintenance decisions.
+
+===============================
+10. KEY TERMS
+===============================
+
+Artificial intelligence: The broad field of building systems that perform tasks associated with intelligent behavior.
+
+Machine learning: A subset of AI in which systems learn patterns from data to make predictions or decisions.
+
+Supervised learning: Learning from labelled input-output examples.
+
+Unsupervised learning: Finding structure or patterns in data without supplied target labels.
+
+Classification: Predicting a category or class.
+
+Regression: Predicting a numerical value.
+
+Feature: An input variable used by a model.
+
+Label or target: The expected output used for supervised training.
+
+Neural network: A layered computational model with connected units and trainable parameters.
+
+Weight: A trainable value that controls the strength of a connection in a model.
+
+Loss function: A function that measures prediction error according to a training objective.
+
+Epoch: One complete pass through the training dataset.
+
+Overfitting: Learning training-specific patterns too closely and generalizing poorly.
+
+Regularization: Techniques that discourage excessive model complexity and can reduce overfitting.
+
+Dropout: A neural-network regularization method that randomly disables units during training.
+
+L2 penalty: A regularization term that penalizes large squared weights.
+
+Inference: Using a trained model to generate a prediction for new input data.
+
+Generalization: The ability to perform well on new, relevant examples.
