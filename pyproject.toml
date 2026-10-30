@@ -1,0 +1,17 @@
+[project]
+name = "self-healing-rag"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "chromadb>=1.5.8",
+    "fastapi>=0.162.0",
+    "langchain-community>=0.4.1",
+    "langchain-groq>=1.1.2",
+    "langchain-text-splitters>=1.1.2",
+    "langgraph>=1.1.9",
+    "onnxruntime<1.20",
+    "python-dotenv>=1.2.2",
+    "uvicorn[standard]>=0.46.0",
+]
